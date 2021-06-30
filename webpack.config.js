@@ -23,6 +23,20 @@ module.exports = {
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify(NODE_ENV), // передача этой переменной в сборку как глобальную переменную
     })
-  ]
+  ],
 
+  module: {
+    rules: [
+      { // подключение babel
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
+  },
 };
