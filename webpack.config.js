@@ -17,7 +17,7 @@ module.exports = {
   },
 
   // devtool: 'source-map',
-  devtool: NODE_ENV == 'development' ? 'eval' : null, // определяем вид source-map для разных режимов
+  devtool: NODE_ENV == 'development' ? 'eval' : false, // определяем вид source-map для разных режимов
 
   plugins: [
     new webpack.DefinePlugin({

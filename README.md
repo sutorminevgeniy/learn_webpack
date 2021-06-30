@@ -1,3 +1,6 @@
+npm install webpack webpack-cli --save-dev
+
 запуск: npx webpack
 
-npx NODE_ENV=development webpack
+npx webpack --node-env production
+npx webpack --node-env production
