@@ -8,10 +8,15 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: './home', // точка входа
+  // точки входа
+  entry: {
+    home: './frontend/home',
+    about: './frontend/about',
+  },
   output: {
-    filename: 'build.js', // куда собирать
-    library: 'home', // для доступа к экспортированнным пременным этого модуля извне (home.welcome(...))
+    path: __dirname + '/dist',
+    filename: '[name].js', // куда собирать
+    library: '[name]', // для доступа к экспортированнным пременным этого модуля извне (home.welcome(...))
   },
 
   watch: NODE_ENV == 'development', // пересобирает сборку при обновление файлов (для режима разработки watch: true')
