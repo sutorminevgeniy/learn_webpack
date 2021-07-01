@@ -26,13 +26,22 @@ module.exports = {
     aggregateTimeout: 100, // время ожидания после изменения
   },
 
-  // devtool: 'source-map',
+  // devtool: 'inline-source-map',
   devtool: NODE_ENV == 'development' ? 'eval' : false, // определяем вид source-map для разных режимов
+
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      name: "commons",
+      minSize: 1,
+      // minChunks: 2
+    },
+  },
 
   plugins: [
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify(NODE_ENV), // передача этой переменной в сборку как глобальную переменную
-    })
+    }),
   ],
 
   module: {
@@ -53,7 +62,5 @@ module.exports = {
 
 if (NODE_ENV == 'production') {
   // минификация для продакшен сборки
-  module.exports.optimization = {
-    minimizer: [new UglifyJsPlugin()],
-  };
-}
+  module.exports.optimization.minimizer = [new UglifyJsPlugin()];
+};
