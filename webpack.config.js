@@ -1,8 +1,11 @@
 'use strict';
 
 const NODE_ENV = process.env.NODE_ENV || 'development'; // Переменная окружения для определения режима сборки
-console.log(NODE_ENV)
+console.log(NODE_ENV);
+
 const webpack = require('webpack');
+
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './home', // точка входа
@@ -40,3 +43,10 @@ module.exports = {
     ]
   },
 };
+
+if (NODE_ENV == 'production') {
+  // минификация для продакшен сборки
+  module.exports.optimization = {
+    minimizer: [new UglifyJsPlugin()],
+  };
+}
