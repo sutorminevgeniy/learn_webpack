@@ -9,13 +9,15 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   // точки входа
+  context: __dirname + '/frontend', // папка где лежат файлы
   entry: {
-    home: './frontend/home',
-    about: './frontend/about',
+    home: './home',
+    about: './about',
   },
+  // точки вsхода
   output: {
-    path: __dirname + '/dist',
-    filename: '[name].js', // куда собирать
+    path: __dirname + '/dist', // папка куда собират
+    filename: '[name].js', // файлы куда собирать
     library: '[name]', // для доступа к экспортированнным пременным этого модуля извне (home.welcome(...))
   },
 
