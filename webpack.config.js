@@ -1,7 +1,7 @@
 'use strict';
 
 const NODE_ENV = process.env.NODE_ENV || 'development'; // Переменная окружения для определения режима сборки
-console.log(NODE_ENV);
+// console.log(NODE_ENV);
 
 const webpack = require('webpack');
 
